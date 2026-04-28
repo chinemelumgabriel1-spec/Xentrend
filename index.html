@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xentrend | Marketplace</title>
+
+<!-- GOOGLE ANALYTICS -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5QY8MN0N2V"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-5QY8MN0N2V');
+</script>
+
+<style>
+body { font-family: Arial, sans-serif; margin:0; background:#f5f5f5; }
+
+/* HEADER */
+.header {
+  display:flex; align-items:center; gap:10px;
+  background:#000; color:white; padding:10px;
+}
+.logo { width:90px; }
+
+/* NAV */
+nav {
+  display:flex; justify-content:center;
+  background:#128C7E;
+}
+nav a {
+  padding:12px; color:white; text-decoration:none;
+}
+
+/* CATEGORY */
+.categories {
+  display:flex; flex-wrap:wrap;
+  justify-content:center; gap:8px;
+  padding:10px; background:#fff;
+}
+.categories button {
+  padding:8px 12px; border:none; border-radius:20px;
+  cursor:pointer; background: #eee;
+}
+.categories .active {
+  background:#128C7E; color:white;
+}
+
+/* SEARCH */
+.search-box { text-align:center; padding:10px; }
+.search-box input { width:80%; max-width:400px; padding:12px; border-radius:25px; border:1px solid #ccc; }
+
+/* PRODUCTS GRID */
+#products {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:12px; padding:12px;
+}
+
+.product {
+  background:white;
+  padding:10px;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* IMAGE CONTAINER & VERIFIED BADGE */
+.img-container {
+  position: relative;
+  width: 100%;
+}
+
+.product img {
+  width:100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius:10px;
+  cursor:pointer;
+  background: #f0f0f0;
+}
+
+.badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #128C7E;
+  color: white;
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.product h3 { font-size: 1.1rem; margin: 10px 0 5px; }
+.seller-name { font-weight: bold; margin: 0; color: #333; }
+.shop-tag { color: #128C7E; font-weight: bold; font-size: 0.85rem; margin: 4px 0; }
+.loc-tag { font-size: 0.8rem; color: #777; margin-bottom: 10px; }
+
+/* BUTTONS */
+.btn {
+  display:block;
+  width: 100%;
+  margin:4px 0;
+  padding:10px;
+  border:none;
+  border-radius:6px;
+  color:white;
+  cursor:pointer;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.whatsapp { background:#25D366; }
+.call { background:#007BFF; }
+
+/* ZOOM MODAL */
+#imageModal {
+  display:none;
+  position:fixed;
+  z-index:9999;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.9);
+  justify-content:center; align-items:center;
+}
+
+#zoomedImage {
+  max-width:95%; max-height:90%;
+  border-radius:10px;
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+}
+
+/* FOOTER */
+footer {
+  background:#000;
+  color:white;
+  text-align:center;
+  padding:30px 10px;
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <img src="logo.png" class="logo" alt="Logo">
+  <h2>XENTREND</h2>
+</header>
+
+<nav>
+  <a href="#products">Products</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<div class="categories">
+  <button onclick="filterCategory('all',event)" class="active">All</button>
+  <button onclick="filterCategory('Masonry',event)">Masonry</button>
+  <button onclick="filterCategory('Roofing',event)">Roofing</button>
+  <button onclick="filterCategory('Plumbing',event)">Plumbing</button>
+  <button onclick="filterCategory('Electrical',event)">Electrical</button>
+  <button onclick="filterCategory('Finishing',event)">Finishing</button>
+  <button onclick="filterCategory('Hardware',event)">Hardware</button>
+  <button onclick="filterCategory('Equipment',event)">Equipment</button>
+</div>
+
+<div class="search-box">
+  <input id="search" placeholder="Search products or sellers..." oninput="filterProducts()">
+  <button onclick="filterProducts()" style="padding: 11px 15px; border-radius: 25px; border: none; background: #128C7E; color: white; cursor: pointer; margin-left: -50px;">search</button>
+</div>
+
+
+<div id="products"></div>
+
+<div id="imageModal" onclick="closeImage()">
+  <img id="zoomedImage" onclick="toggleZoom(event)">
+</div>
+
+<footer id="contact">
+  <p><strong>Xentrend Marketplace</strong></p>
+  <p>Direct Connection to Market Sellers</p>
+  <p><strong>For more information contact Admin</strong></p>
+  <a href="#" onclick="contactAdmin()" style="color:#25D366; text-decoration: none;">Chat with Admin</a>
+  <p>📍 Ogidi, Anambra State</p>
+</footer>
+
+<script>
+let sessionStart = Date.now();
+let allProducts = [];
+let currentCategory = "all";
+let zoomed = false;
+
+/* LOAD DATA */
+fetch('data.json')
+.then(res => res.json())
+.then(data => {
+  allProducts = data;
+  displayProducts(data);
+})
+.catch(err => {
+  console.error("Data load error:", err);
+  document.getElementById("products").innerHTML = "<p>Please ensure data.json is in the same folder.</p>";
+});
+
+/* DISPLAY */
+function displayProducts(products) {
+  let container = document.getElementById("products");
+  container.innerHTML = "";
+
+  if(products.length === 0){
+    container.innerHTML = "<p style='grid-column:1/-1; text-align:center;'>No results found</p>";
+    return;
+  }
+
+  products.forEach(item => {
+    // Verified Badge HTML
+    const badge = item.verified ? `<div class="badge">VERIFIED ✔</div>` : '';
+    
+    container.innerHTML += `
+<div class="product">
+  <div class="img-container">
+    ${badge}
+    <img src="${item.image}" onclick="zoomImage('${item.image}')">
+  </div>
+
+  <h3>${item.name}</h3>
+
+  <p class="seller-name">${item.seller}</p>
+  <p class="shop-tag">🏪 ${item.shop}</p>
+
+  ${item.line ? `<p class="line-tag">📦 ${item.line}</p>` : ''}
+
+  <p class="loc-tag">📍 ${item.location}</p>
+
+  <button class="btn whatsapp"
+    onclick="contactSeller('${item.whatsapp}','${item.name}','${item.seller}')">
+    WhatsApp Seller
+  </button>
+
+  <button class="btn call"
+    onclick="callSeller('${item.whatsapp}','${item.name}')">
+    Call Seller
+  </button>
+</div>
+`;
+  });
+}
+
+/* CATEGORY & SEARCH */
+function filterCategory(cat, e){
+  currentCategory = cat;
+  document.querySelectorAll(".categories button").forEach(b => b.classList.remove("active"));
+  e.target.classList.add("active");
+  filterProducts();
+}
+
+function filterProducts(){
+  let query = document.getElementById("search").value.toLowerCase();
+  let filtered = allProducts.filter(p => {
+    const matchCat = (currentCategory === "all" || p.category === currentCategory);
+    const matchSearch = (p.name.toLowerCase().includes(query) || p.seller.toLowerCase().includes(query));
+    return matchCat && matchSearch;
+  });
+  displayProducts(filtered);
+}
+
+/* TRACKING */
+
+// WhatsApp
+function contactSeller(phone, product, seller){
+  let key = "clicked_" + product + "_" + phone;
+
+  if(localStorage.getItem(key)){
+    window.location.href = "https://wa.me/" + phone;
+    return;
+  }
+
+  gtag('event', 'whatsapp_click', {
+    event_category: 'engagement',
+    event_label: product,
+    transport_type: 'beacon'
+  });
+
+  localStorage.setItem(key, "true");
+
+  let msg = encodeURIComponent(
+    "Hello, I saw your product [" + product + "] on Xentrend."
+  );
+
+  setTimeout(() => {
+    window.location.href = "https://wa.me/" + phone + "?text=" + msg;
+  }, 300);
+}
+
+
+// CALL
+function callSeller(phone, product){
+  gtag('event', 'call_click', {
+    event_category: 'engagement',
+    event_label: product,
+    transport_type: 'beacon'
+  });
+
+  setTimeout(() => {
+    window.location.href = "tel:" + phone;
+  }, 500);
+}
+
+
+// ADMIN
+// ADMIN
+function contactAdmin(){
+  gtag('event', 'admin_click', {
+    event_category: 'engagement',
+    transport_type: 'beacon'
+  });
+
+  setTimeout(() => {
+    window.location.href = "https://wa.me/2349029900447?text=Hi%20Xentrend";
+  }, 300);
+}
+
+/* IMAGE ZOOM */
+function zoomImage(src){
+  const modal = document.getElementById("imageModal");
+  const img = document.getElementById("zoomedImage");
+  img.src = src;
+  modal.style.display = "flex";
+  zoomed = false;
+  img.style.transform = "scale(1)";
+}
+
+function toggleZoom(e){
+  e.stopPropagation();
+  const img = document.getElementById("zoomedImage");
+  if(!zoomed){
+    img.style.transform = "scale(2)";
+    zoomed = true;
+  } else {
+    img.style.transform = "scale(1)";
+    zoomed = false;
+  }
+}
+
+function closeImage(){
+  document.getElementById("imageModal").style.display = "none";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+[
+  {"name":"Industrial Felt","category":"Roofing","seller":"Amaechi Egwuomwu","shop":"Shop 29","line":"line-f","location":"Ogidi","whatsapp":"2348033734802","image":"Felt1.jpg","verified":true},
+  {"name":"Dangote Cement","category":"Masonry","seller":"Okeke Materials","shop":"Shop 12","location":"Ogidi","whatsapp":"2348169405064","image":"cement1.jpg","verified":true},
+  {"name":"BUA Cement","category":"Masonry","seller":"Chukwu Depot","shop":"Shop 15","location":"Ogidi","whatsapp":"2349037578968","image":"cement2.jpg","verified":true},
+  {"name":"Sharp Sand","category":"Masonry","seller":"Build Base","shop":"Shop 08","location":"Ogidi","whatsapp":"2348010000003","image":"sand1.jpg","verified":false},
+  {"name":"Granite","category":"Masonry","seller":"Build Base","shop":"Shop 08","location":"Ogidi","whatsapp":"2348010000004","image":"granite1.jpg","verified":false},
+
+  {"name":"Aluminum Roofing Sheet","category":"Roofing","seller":"Top Roof","shop":"Shop 21","location":"Ogidi","whatsapp":"2348010000005","image":"roof1.jpg","verified":true},
+  {"name":"Stone Coated Roof","category":"Roofing","seller":"Prime Roof","shop":"Shop 22","location":"Ogidi","whatsapp":"2348010000006","image":"roof2.jpg","verified":true},
+
+  {"name":"PVC Pipe","category":"Plumbing","seller":"Aqua Store","shop":"Shop 05","location":"Ogidi","whatsapp":"2348010000007","image":"pipe1.jpg","verified":false},
+  {"name":"Water Tank","category":"Plumbing","seller":"Tank World","shop":"Shop 06","location":"Ogidi","whatsapp":"2348010000008","image":"tank1.jpg","verified":true},
+
+  {"name":"Electric Cable","category":"Electrical","seller":"Power Line","shop":"Shop 18","location":"Ogidi","whatsapp":"2348010000009","image":"elec1.jpg","verified":true},
+  {"name":"LED Bulb","category":"Electrical","seller":"Electro Hub","shop":"Shop 19","location":"Ogidi","whatsapp":"2348010000010","image":"elec2.jpg","verified":false},
+
+  {"name":"Wall Tiles","category":"Finishing","seller":"Tile House","shop":"Shop 30","location":"Ogidi","whatsapp":"2348010000011","image":"tile1.jpg","verified":true},
+  {"name":"Floor Tiles","category":"Finishing","seller":"Tile House","shop":"Shop 30","location":"Ogidi","whatsapp":"2348010000012","image":"tile2.jpg","verified":true},
+
+  {"name":"Nails 3 inch","category":"Hardware","seller":"Tool House","shop":"Shop 11","location":"Ogidi","whatsapp":"2348010000013","image":"nail1.jpg","verified":false},
+  {"name":"Hammer","category":"Hardware","seller":"Tool House","shop":"Shop 11","location":"Ogidi","whatsapp":"2348010000014","image":"tool1.jpg","verified":true},
+
+  {"name":"Iron Rod 12mm","category":"Masonry","seller":"Steel Hub","shop":"Shop 25","location":"Ogidi","whatsapp":"2348010000015","image":"iron1.jpg","verified":true},
+  {"name":"Binding Wire","category":"Masonry","seller":"Metal Works","shop":"Shop 26","location":"Ogidi","whatsapp":"2348010000016","image":"wire1.jpg","verified":false},
+
+  {"name":"POP Ceiling","category":"Finishing","seller":"Interior Plus","shop":"Shop 31","location":"Ogidi","whatsapp":"2348010000017","image":"pop1.jpg","verified":true},
+  {"name":"PVC Ceiling","category":"Finishing","seller":"Interior Plus","shop":"Shop 31","location":"Ogidi","whatsapp":"2348010000018","image":"ceiling1.jpg","verified":false},
+
+  {"name":"Glass Window","category":"Finishing","seller":"Window Tech","shop":"Shop 40","location":"Ogidi","whatsapp":"2348010000019","image":"window1.jpg","verified":true},
+  {"name":"Sliding Window","category":"Finishing","seller":"Window Tech","shop":"Shop 40","location":"Ogidi","whatsapp":"2348010000020","image":"window2.jpg","verified":false},
+
+  {"name":"Security Door","category":"Finishing","seller":"Secure Home","shop":"Shop 41","location":"Ogidi","whatsapp":"2348010000021","image":"door1.jpg","verified":true},
+  {"name":"Wooden Door","category":"Finishing","seller":"Door Masters","shop":"Shop 42","location":"Ogidi","whatsapp":"2348010000022","image":"door2.jpg","verified":false},
+
+  {"name":"Shovel","category":"Hardware","seller":"BuildPro","shop":"Shop 13","location":"Ogidi","whatsapp":"2348010000023","image":"tool2.jpg","verified":false},
+  {"name":"Wheelbarrow","category":"Hardware","seller":"BuildPro","shop":"Shop 13","location":"Ogidi","whatsapp":"2348010000024","image":"tool3.jpg","verified":true},
+
+  {"name":"Concrete Mixer","category":"Equipment","seller":"EquipPro","shop":"Shop 50","location":"Ogidi","whatsapp":"2348010000025","image":"equip1.jpg","verified":true},
+  {"name":"Generator","category":"Equipment","seller":"EquipPro","shop":"Shop 50","location":"Ogidi","whatsapp":"2348010000026","image":"equip2.jpg","verified":false},
+
+  {"name":"Drilling Machine","category":"Equipment","seller":"EquipPro","shop":"Shop 50","location":"Ogidi","whatsapp":"2348010000027","image":"equip3.jpg","verified":true},
+  {"name":"Angle Grinder","category":"Equipment","seller":"EquipPro","shop":"Shop 50","location":"Ogidi","whatsapp":"2348010000028","image":"equip4.jpg","verified":false},
+
+  {"name":"Paint Emulsion","category":"Finishing","seller":"Color World","shop":"Shop 33","location":"Ogidi","whatsapp":"2348010000029","image":"paint1.jpg","verified":true},
+  {"name":"Gloss Paint","category":"Finishing","seller":"Color World","shop":"Shop 33","location":"Ogidi","whatsapp":"2348010000030","image":"paint2.jpg","verified":false},
+
+  {"name":"Door Handle","category":"Hardware","seller":"Tool House","shop":"Shop 11","location":"Ogidi","whatsapp":"2348010000031","image":"handle.jpg","verified":true},
+  {"name":"Screw Driver","category":"Hardware","seller":"Tool House","shop":"Shop 11","location":"Ogidi","whatsapp":"2348010000032","image":"screw.jpg","verified":false},
+
+  {"name":"Toilet Seat","category":"Plumbing","seller":"Aqua Store","shop":"Shop 05","location":"Ogidi","whatsapp":"2348010000033","image":"toilet.jpg","verified":true},
+  {"name":"Wash Basin","category":"Plumbing","seller":"Aqua Store","shop":"Shop 05","location":"Ogidi","whatsapp":"2348010000034","image":"basin.jpg","verified":false},
+
+  {"name":"Extension Box","category":"Electrical","seller":"Electro Hub","shop":"Shop 19","location":"Ogidi","whatsapp":"2348010000035","image":"extension.jpg","verified":true},
+  {"name":"Switch","category":"Electrical","seller":"Electro Hub","shop":"Shop 19","location":"Ogidi","whatsapp":"2348010000036","image":"switch.jpg","verified":false},
+
+  {"name":"Ceiling Fan","category":"Electrical","seller":"Power Line","shop":"Shop 18","location":"Ogidi","whatsapp":"2348010000037","image":"fan.jpg","verified":true},
+  {"name":"Water Pump","category":"Equipment","seller":"EquipPro","shop":"Shop 50","location":"Ogidi","whatsapp":"2348010000038","image":"pump.jpg","verified":false},
+
+  {"name":"Ladder","category":"Equipment","seller":"EquipPro","shop":"Shop 50","location":"Ogidi","whatsapp":"2348010000039","image":"ladder.jpg","verified":true},
+  {"name":"Paint Roller","category":"Finishing","seller":"Color World","shop":"Shop 33","location":"Ogidi","whatsapp":"2348010000040","image":"roller.jpg","verified":false}
+]
